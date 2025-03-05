@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -11,8 +10,7 @@ import {
   PaintBucket, 
   ShoppingBag, 
   Shirt,
-  MessageSquare, 
-  Users 
+  MessageSquare
 } from "lucide-react";
 
 const Index = () => {
@@ -86,15 +84,9 @@ const Index = () => {
               />
               <FeatureCard 
                 icon={MessageSquare}
-                title="Automated Responses"
-                description="Set up automated responses for common client queries and appointment bookings."
+                title="Direct Messaging"
+                description="Communicate with clients through a secure and user-friendly messaging interface."
                 delay={500}
-              />
-              <FeatureCard 
-                icon={Users}
-                title="Client Management"
-                description="Organize client information, preferences, and interaction history in one place."
-                delay={600}
               />
             </div>
           </div>
