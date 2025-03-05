@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -9,8 +10,7 @@ import {
   BarChart3, 
   PaintBucket, 
   ShoppingBag, 
-  Shirt,
-  MessageSquare
+  Shirt
 } from "lucide-react";
 
 const Index = () => {
@@ -57,7 +57,7 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
               <FeatureCard 
                 icon={Smartphone}
                 title="WhatsApp Integration"
@@ -82,12 +82,6 @@ const Index = () => {
                 description="AI-powered product suggestions based on client preferences and previous purchases."
                 delay={400}
               />
-              <FeatureCard 
-                icon={MessageSquare}
-                title="Direct Messaging"
-                description="Communicate with clients through a secure and user-friendly messaging interface."
-                delay={500}
-              />
             </div>
           </div>
         </section>
@@ -103,8 +97,8 @@ const Index = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-3xl blur-2xl -z-10 animate-pulse-slow"></div>
                   <div className="glass-card rounded-3xl overflow-hidden shadow-2xl">
                     <img
-                      src="https://images.unsplash.com/photo-1577975882846-431adc8c2009?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
-                      alt="Fashion consultation"
+                      src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1788&q=80"
+                      alt="Men's fashion consultation"
                       className="w-full h-auto object-cover"
                     />
                   </div>
