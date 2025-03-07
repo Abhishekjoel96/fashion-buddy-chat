@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -6,6 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Send } from "lucide-react";
+
+// API client for server communication
+const API_URL = import.meta.env.VITE_API_URL || 'https://fashion-buddy-backend-i2w8okihe-abhisheks-projects-76c99680.vercel.app';
+const ADMIN_API_KEY = import.meta.env.VITE_ADMIN_API_KEY;
 
 interface ClientModalProps {
   open: boolean;
@@ -18,7 +21,7 @@ const ClientModal = ({ open, onOpenChange }: ClientModalProps) => {
   const [phone, setPhone] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!name || !phone) {
@@ -32,17 +35,42 @@ const ClientModal = ({ open, onOpenChange }: ClientModalProps) => {
 
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const response = await fetch(`${API_URL}/api/clients`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': ADMIN_API_KEY
+        },
+        body: JSON.stringify({ 
+          name, 
+          phone_number: phone 
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to add client");
+      }
+
       toast({
         title: "Success",
         description: `Client ${name} added. WhatsApp chat initiated!`,
       });
-      setIsLoading(false);
       setName("");
       setPhone("");
       onOpenChange(false);
-    }, 1500);
+    } catch (error) {
+      console.error("Error adding client:", error);
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Failed to add client",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -69,7 +97,7 @@ const ClientModal = ({ open, onOpenChange }: ClientModalProps) => {
             <Label htmlFor="phone">WhatsApp Number</Label>
             <Input
               id="phone"
-              placeholder="+1 (555) 123-4567"
+              placeholder="+91 9876543210"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               className="bg-white/50 dark:bg-black/50 border-gray-200 dark:border-gray-700"
