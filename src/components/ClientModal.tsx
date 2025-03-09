@@ -7,7 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2, Send } from "lucide-react";
 
 // API client for server communication
-const API_URL = import.meta.env.VITE_API_URL || 'https://fashion-buddy-backend-i2w8okihe-abhisheks-projects-76c99680.vercel.app';
+const API_URL = import.meta.env.VITE_API_URL || 'https://fashion-buddy-backend.vercel.app';
 const ADMIN_API_KEY = import.meta.env.VITE_ADMIN_API_KEY;
 
 interface ClientModalProps {
