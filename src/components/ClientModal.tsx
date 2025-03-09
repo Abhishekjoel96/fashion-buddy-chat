@@ -90,6 +90,7 @@ const ClientModal = ({ open, onOpenChange }: ClientModalProps) => {
               onChange={(e) => setName(e.target.value)}
               className="bg-white/50 dark:bg-black/50 border-gray-200 dark:border-gray-700"
               required
+              autoComplete="off"
             />
           </div>
 
@@ -102,6 +103,7 @@ const ClientModal = ({ open, onOpenChange }: ClientModalProps) => {
               onChange={(e) => setPhone(e.target.value)}
               className="bg-white/50 dark:bg-black/50 border-gray-200 dark:border-gray-700"
               required
+              autoComplete="off"
             />
           </div>
 
